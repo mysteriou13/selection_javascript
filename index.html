@@ -1,4 +1,10 @@
- <div id="div"> div </div>
+
+
+<div id = "can" style = "background-color: red; width:500px; height:500px;">
+<canvas id = "div">
+
+</canvas>
+</div>
 
 <style>
 
@@ -11,7 +17,13 @@
 
 <script>
     var div = document.getElementById('div'), x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+    var can = document.getElementById("can");
+
+    var c = 0;
 function reCalc() { //This will restyle the div
+
+    div.style.display = "block";
+
     var x3 = Math.min(x1,x2); //Smaller X
     var x4 = Math.max(x1,x2); //Larger X
     var y3 = Math.min(y1,y2); //Smaller Y
@@ -22,16 +34,56 @@ function reCalc() { //This will restyle the div
     div.style.height = y4 - y3 + 'px';
 }
 
+onmousedown =  function(e) {
     x1 = e.clientX; //Set the initial X
     y1 = e.clientY; //Set the initial Y
-    reCalc();
+    
+    var x = e.clientX;
+  var y = e.clientY;
+
+
+  c = 1;
+
+  if(x < 500){
+
+    if(c == 1){
+
+reCalc();
+
+  }
+}
+
 };
+
 onmousemove = function(e) {
     x2 = e.clientX; //Update the current position X
     y2 = e.clientY; //Update the current position Y
-    reCalc();
-};
-onmouseup = function(e) {
     
+
+    var x = e.clientX;
+  var y = e.clientY;
+
+  
+     if(x < 500){
+
+        if(c == 1){
+
+          reCalc();
+
+        }
+
+     }
+
+     
+};
+
+onmouseup = function(e) {
+
+ c = 0;
+    div.style.width = '0px';
+    div.style.height = '0px';
+
+    div.style.display = "none";
+
 };
     </script>
