@@ -1,6 +1,6 @@
 
 
-<div id = "can" style = "background-color: red; width:500px; height:500px;">
+<div id = "can" style = " width:100%; height:100%;">
 <canvas id = "div">
 
 </canvas>
@@ -11,6 +11,7 @@
 #div {
     border: 1px dotted #000;
     position: absolute;
+    display: none;
 }
 
 </style>
@@ -35,6 +36,9 @@ function reCalc() { //This will restyle the div
 }
 
 onmousedown =  function(e) {
+  
+
+
     x1 = e.clientX; //Set the initial X
     y1 = e.clientY; //Set the initial Y
     
@@ -44,18 +48,27 @@ onmousedown =  function(e) {
 
   c = 1;
 
-  if(x < 500){
 
+  
     if(c == 1){
+
+      if(e.button == 0){
 
 reCalc();
 
   }
+
+
+  
+
+
 }
 
 };
 
 onmousemove = function(e) {
+  
+  
     x2 = e.clientX; //Update the current position X
     y2 = e.clientY; //Update the current position Y
     
@@ -64,15 +77,17 @@ onmousemove = function(e) {
   var y = e.clientY;
 
   
-     if(x < 500){
+    
 
         if(c == 1){
 
-          reCalc();
+          if(e.button == 0){
 
+          reCalc();
+          }
         }
 
-     }
+     
 
      
 };
@@ -80,10 +95,10 @@ onmousemove = function(e) {
 onmouseup = function(e) {
 
  c = 0;
-    div.style.width = '0px';
-    div.style.height = '0px';
+ x1 = e.clientX; //Set the initial X
+    y1 = e.clientY; 
 
-    div.style.display = "none";
+    div.style.display = "block";
 
 };
     </script>
